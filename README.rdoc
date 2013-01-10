@@ -16,6 +16,8 @@ Get fuel prices of the ANP (Agência Nacional do Petróleo, Gás Natural e Bioco
     puts row[:razao_social]
   end
 
+Simple post about this gem: http://rogeriozambon.com/gem-para-consulta-de-precos-de-combustiveis
+
 == Maintainer
 
 * Rogério Zambon (http://rogeriozambon.com)
