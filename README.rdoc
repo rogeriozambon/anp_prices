@@ -11,7 +11,7 @@ Get fuel prices of the ANP (Agência Nacional do Petróleo, Gás Natural e Bioco
   require "rubygems"
   require "anp_prices"
 
-  anp = ANP.new "9668*SAO@PAULO", :gasolina
+  anp = ANP.new "Sao Paulo", :gasolina
   anp.prices.each do |row|
     puts row[:razao_social]
   end
