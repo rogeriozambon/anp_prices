@@ -8,7 +8,7 @@ Get fuel prices of the ANP (Agência Nacional do Petróleo, Gás Natural e Bioco
 
 == Usage
 
-Don't use accent in city parameter!
+Don't use accentuation in city parameter!
 
   require "rubygems"
   require "anp_prices"
