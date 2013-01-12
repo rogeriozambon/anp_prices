@@ -5,12 +5,26 @@ describe ANP do
     expect { anp = ANP.new }.to raise_error(ArgumentError)
   end
 
+  context "Find city code" do
+    before do
+      fixture = File.open("spec/fixture/city_sao_paulo.html").read
+      parser = Nokogiri::HTML(fixture).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
+
+      @anp = ANP.new "Sao Paulo", :gasolina
+      @anp.stub(:request_city).and_return(parser)
+    end
+
+    it "check city code" do
+      @anp.city.should == "9668*SAO@PAULO"
+    end
+  end
+
   context "Informations" do
     before do
       fixture = File.open("spec/fixture/anp_sao_paulo.html").read
       parser = Nokogiri::HTML(fixture).xpath("//div[@class='multi_box3']/table[@class='table_padrao scrollable_table']")
 
-      @anp = ANP.new "9668*SAO@PAULO", :gasolina
+      @anp = ANP.new "Sao Paulo", :gasolina
       @anp.stub(:request_page).and_return(parser)
     end
 

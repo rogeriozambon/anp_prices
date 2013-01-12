@@ -7,7 +7,7 @@ class ANP
   def initialize(city = nil, fuel = nil)
     raise ArgumentError if city.nil? or fuel.nil?
 
-    @city = city
+    @city = find_code_of(city)
     @fuel = fuel
   end
 
@@ -48,6 +48,22 @@ class ANP
     }
 
     Nokogiri::HTML(req.body).xpath "//div[@class='multi_box3']/table[@class='table_padrao scrollable_table']"
+  end
+
+  def request_city(name)
+    req = RestClient.post "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Index.asp", :txtMunicipio => name
+
+    Nokogiri::HTML(req.body).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
+  end
+
+  def find_code_of(name)
+    request_city(name).each do |node|
+      node.each_with_index do |code, index|
+        next if index == 0
+
+        return code[1]
+      end
+    end
   end
 
   def push_values_with(lines)
