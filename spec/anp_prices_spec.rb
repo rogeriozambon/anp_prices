@@ -11,7 +11,7 @@ describe ANP do
       parser = Nokogiri::HTML(fixture).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
 
       @anp = ANP.new "Sao Paulo", :gasolina
-      @anp.stub(:request_city).and_return(parser)
+      @anp.stub(:request_city).and_return parser
     end
 
     it "check city code" do
@@ -22,10 +22,10 @@ describe ANP do
   context "Informations" do
     before do
       fixture = File.open("spec/fixture/anp_sao_paulo.html").read
-      parser = Nokogiri::HTML(fixture).xpath("//div[@class='multi_box3']/table[@class='table_padrao scrollable_table']")
+      parser = Nokogiri::HTML(fixture).xpath "//div[@class='multi_box3']/table[@class='table_padrao scrollable_table']"
 
       @anp = ANP.new "Sao Paulo", :gasolina
-      @anp.stub(:request_page).and_return(parser)
+      @anp.stub(:request_page).and_return parser
     end
 
     it "check object types" do
