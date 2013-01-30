@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    anp_prices (1.01)
+      nokogiri (>= 1.5.6)
+      rest-client (>= 1.6.7)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    fakeweb (1.3.0)
+    mime-types (1.19)
+    nokogiri (1.5.6)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  anp_prices!
+  fakeweb (>= 1.3)

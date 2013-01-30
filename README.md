@@ -1,30 +1,38 @@
-= ANP Prices
+# ANP Prices
 
 Get fuel prices of the ANP (Agência Nacional do Petróleo, Gás Natural e Biocombustíveis) Brazil.
 
-== Installation
+## Installation
 
-  gem install anp_prices
+~~~.ruby
+gem install anp_prices
+~~~
 
-== Usage
+## Usage
 
 Don't use accentuation in city parameter!
 
-  require "rubygems"
-  require "anp_prices"
+~~~.ruby
+require "rubygems"
+require "anp_prices"
 
-  anp = ANP.new "Sao Paulo", :gasolina
-  anp.prices.each do |row|
-    puts row[:razao_social]
-  end
+anp = ANP.new "Sao Paulo", :gasolina
+anp.prices.each do |row|
+  puts row[:razao_social]
+end
+~~~
 
-Simple post about this gem: http://rogeriozambon.com/gem-para-consulta-de-precos-de-combustiveis
+Simple [post about](http://rogeriozambon.com/gem-para-consulta-de-precos-de-combustiveis) this gem.
 
-== Maintainer
+## Maintainer
 
 * Rogério Zambon (http://rogeriozambon.com)
 
-== License
+## Collaborators
+
+* Willian Oizumi (http://willianoizumi.com)
+
+## License
 
 (The MIT License)
 
