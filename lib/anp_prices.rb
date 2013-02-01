@@ -7,6 +7,8 @@ class ANP
   def initialize(city = nil, fuel = nil)
     raise ArgumentError if city.nil? or fuel.nil?
 
+    RestClient.proxy = ENV["http_proxy"]
+
     @city = find_code_of(city)
     @fuel = fuel
   end
@@ -40,8 +42,6 @@ class ANP
   end
 
   def request_page
-    RestClient.proxy = ENV["http_proxy"]
-
     request = RestClient.post "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Posto.asp", {
       :Tipo => "2",
       :Cod_Combustivel => fuel_types[@fuel],
