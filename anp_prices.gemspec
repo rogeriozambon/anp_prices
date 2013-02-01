@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.name = "anp_prices"
   s.authors = ["Rogério Zambon"]
   s.email = ["rogeriozambon@gmail.com"]
-  s.date = "2013-01-12"
+  s.date = "2013-02-01"
   s.description = "Get fuel prices of the ANP - Agência Nacional do Petróleo, Gás Natural e Biocombustíveis"
   s.homepage = "http://github.com/rogeriozambon/anp_prices"
 
@@ -17,5 +17,5 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.8.23")
   s.summary = s.description
 
-  s.version = "1.01"
+  s.version = "1.02"
 end
