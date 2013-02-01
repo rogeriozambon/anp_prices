@@ -40,20 +40,22 @@ class ANP
   end
 
   def request_page
-    req = RestClient.post "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Posto.asp", {
+    RestClient.proxy = ENV["http_proxy"]
+
+    request = RestClient.post "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Posto.asp", {
       :Tipo => "2",
       :Cod_Combustivel => fuel_types[@fuel],
       :selMunicipio => @city,
       :BAIRRO => "0"
     }
 
-    Nokogiri::HTML(req.body).xpath "//div[@class='multi_box3']/table[@class='table_padrao scrollable_table']"
+    Nokogiri::HTML(request.body).xpath "//div[@class='multi_box3']/table[@class='table_padrao scrollable_table']"
   end
 
   def request_city(name)
-    req = RestClient.post "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Index.asp", :txtMunicipio => name
+    request = RestClient.post "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Index.asp", :txtMunicipio => name
 
-    Nokogiri::HTML(req.body).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
+    Nokogiri::HTML(request.body).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
   end
 
   def find_code_of(name)
