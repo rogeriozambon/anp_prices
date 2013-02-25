@@ -26,7 +26,7 @@ Simple [post about](http://rogeriozambon.com/gem-para-consulta-de-precos-de-comb
 
 ## Maintainer
 
-* Rogério Zambon (http://rogeriozambon.com)
+* Rogério Zambon (http://rogerio.me)
 
 ## Collaborators
 
