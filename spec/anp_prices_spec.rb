@@ -1,5 +1,4 @@
-require_relative "../lib/anp_prices"
-require "fakeweb"
+require "spec_helper"
 
 describe ANP do
   it "missing parameters" do
