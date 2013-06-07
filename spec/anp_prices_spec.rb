@@ -2,23 +2,10 @@ require "spec_helper"
 
 describe ANP do
   it "missing parameters" do
-    expect { anp = ANP.new }.to raise_error(ArgumentError)
+    expect { anp = ANP.new }.to raise_error
   end
 
-  context "Find city code" do
-    before do
-      fixture = File.open("spec/fixture/city_sao_paulo.html").read
-      FakeWeb.register_uri(:any, "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Index.asp", :body => fixture)
-
-      @anp = ANP.new "Sao Paulo", :gasolina
-    end
-
-    it "check city code" do
-      @anp.city.should == "9668*SAO@PAULO"
-    end
-  end
-
-  context "Informations" do
+  context "request information" do
     before do
       fixture = File.open("spec/fixture/anp_sao_paulo.html").read
       FakeWeb.register_uri(:any, "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Posto.asp", :body => fixture)
@@ -26,12 +13,10 @@ describe ANP do
       @anp = ANP.new "Sao Paulo", :gasolina
     end
 
-    it "check object types" do
+    it "checking output" do
       @anp.prices.should be_an(Array)
       @anp.prices.first.should be_a(Hash)
-    end
 
-    it "check hash keys" do
       hash = @anp.prices.first
 
       hash.should have_key(:razao_social)
