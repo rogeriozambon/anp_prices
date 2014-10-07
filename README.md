@@ -26,7 +26,7 @@ anp.prices.each do |row|
 end
 ~~~
 
-Simple [post about](http://rogeriozambon.com/gem-para-consulta-de-precos-de-combustiveis) this gem.
+Simple [post about](http://rogerio.me/gem-para-consulta-de-precos-de-combustiveis) this gem.
 
 ## Maintainer
 
