@@ -21,8 +21,9 @@ require "rubygems"
 require "anp_prices"
 
 anp = ANP.new "Sao Paulo", :gasolina
-anp.prices.each do |row|
-  puts row[:razao_social]
+
+anp.prices.map do |row|
+  row[:preco_venda]
 end
 ~~~
 
