@@ -26,6 +26,28 @@ anp.prices.each do |row|
 end
 ~~~
 
+### Fuel types
+~~~
+:gasolina
+:etanol
+:diesel
+:gnv
+:glp
+~~~
+
+## Returned values
+~~~
+:razao_social
+:endereco
+:bairro
+:bandeira
+:preco_venda
+:preco_compra
+:modalidade
+:fornecedor
+:coleta
+~~~
+
 Simple [post about](http://rogerio.me/gem-para-consulta-de-precos-de-combustiveis) this gem.
 
 ## Maintainer
@@ -35,6 +57,7 @@ Simple [post about](http://rogerio.me/gem-para-consulta-de-precos-de-combustivei
 ## Collaborators
 
 * Willian Oizumi (http://willianoizumi.com)
+* Pedro Felipe (http://pedrofelipe.com.br)
 
 ## License
 
