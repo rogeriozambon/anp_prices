@@ -4,6 +4,7 @@ class RequestANP
 
     @city = find_city_by_code city
     @fuel = fuel_types[fuel]
+    @week = find_week_code
   end
 
   def page
@@ -11,7 +12,8 @@ class RequestANP
       :Tipo => "2",
       :Cod_Combustivel => @fuel,
       :selMunicipio => @city,
-      :BAIRRO => "0"
+      :BAIRRO => "0",
+      :cod_Semana => @week
     }
 
     Nokogiri::HTML(request.body).xpath "//div[@class='multi_box3']/table[@class='table_padrao scrollable_table']"
@@ -28,10 +30,16 @@ class RequestANP
     }
   end
 
+  def find_week_code
+    request = RestClient.get "http://www.anp.gov.br/preco/prc/Resumo_Semanal_Index.asp"
+
+    return Nokogiri::HTML(request.body).xpath "//input[@name='cod_Semana']/@value"
+  end
+
   def city(name)
     request = RestClient.post "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Index.asp", :txtMunicipio => name
 
-    Nokogiri::HTML(request.body).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
+    return Nokogiri::HTML(request.body).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
   end
 
   def find_city_by_code(city_name)
