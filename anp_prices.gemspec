@@ -15,8 +15,8 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_dependency "rest-client", ">= 1.6.7"
-  s.add_dependency "nokogiri", ">= 1.5.6"
+  s.add_dependency "rest-client", ">= 1.6.9"
+  s.add_dependency "nokogiri", ">= 1.6.6.2"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "fakeweb", ">= 1.3"

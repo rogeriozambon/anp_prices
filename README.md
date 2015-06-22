@@ -21,9 +21,32 @@ require "rubygems"
 require "anp_prices"
 
 anp = ANP.new "Sao Paulo", :gasolina
-anp.prices.each do |row|
-  puts row[:razao_social]
+
+anp.prices.map do |row|
+  row[:preco_venda]
 end
+~~~
+
+### Fuel types
+~~~
+:gasolina
+:etanol
+:diesel
+:gnv
+:glp
+~~~
+
+## Returned values
+~~~
+:razao_social
+:endereco
+:bairro
+:bandeira
+:preco_venda
+:preco_compra
+:modalidade
+:fornecedor
+:coleta
 ~~~
 
 Simple [post about](http://rogerio.me/gem-para-consulta-de-precos-de-combustiveis) this gem.
@@ -35,6 +58,7 @@ Simple [post about](http://rogerio.me/gem-para-consulta-de-precos-de-combustivei
 ## Collaborators
 
 * Willian Oizumi (http://willianoizumi.com)
+* Pedro Felipe (http://pedrofelipe.com.br)
 
 ## License
 
