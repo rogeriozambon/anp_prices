@@ -33,13 +33,13 @@ class RequestANP
   def find_week_code
     request = RestClient.get "http://www.anp.gov.br/preco/prc/Resumo_Semanal_Index.asp"
 
-    return Nokogiri::HTML(request.body).xpath "//input[@name='cod_Semana']/@value"
+    Nokogiri::HTML(request.body).xpath "//input[@name='cod_Semana']/@value"
   end
 
   def city(name)
     request = RestClient.post "http://www.anp.gov.br/preco/prc/Resumo_Ultimas_Coletas_Index.asp", :txtMunicipio => name
 
-    return Nokogiri::HTML(request.body).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
+    Nokogiri::HTML(request.body).xpath "//div[@id='divMunicipios']/select[@name='selMunicipio']/option"
   end
 
   def find_city_by_code(city_name)
